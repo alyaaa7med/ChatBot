@@ -1,0 +1,26 @@
+﻿@model ChatBot.Models.ChatViewModel
+
+@{
+    ViewData["Title"] = "Chat with AI";
+}
+
+<h1>Index</h1>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">💬 Chat with AI</h2>
+
+    <form asp-action="Index" method="post">
+        <div class="form-group">
+            <textarea asp-for="UserMessage" class="form-control" rows="3" placeholder="Type your message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Send</button>
+    </form>
+
+    @if (Model != null && !string.IsNullOrEmpty(Model.AIResponse))
+    {
+        <div class="mt-4">
+            <div class="alert alert-info"><b>You:</b> @Model.UserMessage</div>
+            <div class="alert alert-success"><b>AI:</b> @Model.AIResponse</div>
+        </div>
+    }
+</div>
